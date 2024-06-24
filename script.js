@@ -114,7 +114,7 @@ async function displayAlbums() {
         }
 
         // Load the playlist whenever a card is clicked
-        Array.from(document.getElementsByClassName("card")).forEach(e => {
+        Array.from(document.getElementsByClassName(".card")).forEach(e => {
             e.addEventListener("click", async item => {
                 console.log("Fetching Songs");
                 songs = await getSongs(`songs/${item.currentTarget.dataset.folder}`);
@@ -129,20 +129,20 @@ async function displayAlbums() {
 async function main() {
     try {
         // Get the list of all the songs
-        await getSongs("songs/ncs");
+        await getSongs("songs/cs");
         playMusic(songs[0], true);
 
         // Display all the albums on the page
         await displayAlbums();
 
         // Attach event listeners to play, next, and previous
-        document.querySelector("#play").addEventListener("click", () => {
+        document.getElementById("#play").addEventListener("click", () => {
             if (currentSong.paused) {
                 currentSong.play();
-                document.querySelector("#play").src = "img/pause.svg";
+                document.getElementById("#play").src = "img/pause.svg";
             } else {
                 currentSong.pause();
-                document.querySelector("#play").src = "img/play.svg";
+                document.getElementById("#play").src = "img/play.svg";
             }
         });
 
@@ -170,7 +170,7 @@ async function main() {
         });
 
         // Add event listener to previous
-        document.querySelector("#previous").addEventListener("click", () => {
+        document.getElementById("#previous").addEventListener("click", () => {
             currentSong.pause();
             console.log("Previous clicked");
             let index = songs.indexOf(currentSong.src.split("/").slice(-1)[0]);
@@ -180,7 +180,7 @@ async function main() {
         });
 
         // Add event listener to next
-        document.querySelector("#next").addEventListener("click", () => {
+        document.getElementById("#next").addEventListener("click", () => {
             currentSong.pause();
             console.log("Next clicked");
             let index = songs.indexOf(currentSong.src.split("/").slice(-1)[0]);
